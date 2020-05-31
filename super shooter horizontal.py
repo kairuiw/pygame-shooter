@@ -355,7 +355,7 @@ while running:
         explode.play()
         expl = exploder(hit.rect.center, 'lg')
         all_sprites.add(expl)
-        if random.random() > 0.9:
+        if random.random() > 0.7:
             power = powerup(hit.rect.center)
             all_sprites.add(power)
             puss.add(power)
