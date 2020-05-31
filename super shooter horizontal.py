@@ -309,13 +309,13 @@ player = me()
 all_sprites.add(player)
 for i in range(4):
     spawnmob()
-points = 0
     
 pygame.mixer.music.play(loops = -1)
 
 dead_play = True   
 running = True
 points = 0
+lvl = 0
 while running:
     if dead_play:
         show_dead_sc()
@@ -352,6 +352,16 @@ while running:
         if m.picnumber == 3:
             points += 10
             print("mastery!!! !!")
+        if points >= 250:
+            lvl = 1
+        if points >= 750:
+            lvl = 2
+        if points >= 1625:
+            lvl = 3
+        if points >= 3000:
+            lvl = 4
+        if points >= 5500:
+            lvl = 5
         explode.play()
         expl = exploder(hit.rect.center, 'lg')
         all_sprites.add(expl)
@@ -403,7 +413,8 @@ while running:
     back = pygame.transform.scale(background, (WIDTH,HEIGHT))
     surfacekairui.blit(back, background_rect)
     all_sprites.draw(surfacekairui)
-    draw(surfacekairui, str(points), 20, WIDTH / 2, 5)
+    draw(surfacekairui, "points :"+str(points), 20, WIDTH / 2, 5)
+    draw(surfacekairui, "levels :" + str(lvl), 25, 75, HEIGHT - 50)
     draw_shield_bar(surfacekairui, 10, 10, player.shield)
     draw_lives(surfacekairui, WIDTH - 100, HEIGHT - 15, player.lives, mini_player)
     pygame.display.flip()
