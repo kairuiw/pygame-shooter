@@ -68,7 +68,7 @@ def show_dead_sc():
 class me(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.transform.scale(player, (50, 25))
+        self.image = pygame.transform.scale(pic, (50, 25))
         self.image.set_colorkey((0, 0, 0))
         self.rect = self.image.get_rect()
         self.radius = 20
@@ -259,8 +259,8 @@ class powerup(pygame.sprite.Sprite):
 
 background = pygame.image.load(path.join(gs, "darkPurple.png")).convert()
 background_rect = background.get_rect()
-player = pygame.image.load(path.join(gs, "playerShip2_bluehorizontal.png")).convert()
-mini_player = pygame.transform.scale(player,(20,10))
+pic = pygame.image.load(path.join(gs, "playerShip2_bluehorizontal.png")).convert()
+mini_player = pygame.transform.scale(pic,(20,10))
 mini_player.set_colorkey((0, 0, 0)) 
 zap = pygame.image.load(path.join(gs, "laserRed03hor.png")).convert()
 UFOS = []
@@ -355,7 +355,7 @@ while running:
         explode.play()
         expl = exploder(hit.rect.center, 'lg')
         all_sprites.add(expl)
-        if random.random() > 0.7:
+        if random.random() > 0.9:
             power = powerup(hit.rect.center)
             all_sprites.add(power)
             puss.add(power)
